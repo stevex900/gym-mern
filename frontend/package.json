@@ -1,5 +1,6 @@
 {
   "homepage": "https://stevex900.github.io/gym/",
+  "proxy":"http://127.0.0.1:5000",
   "name": "gym",
   "version": "0.1.0",
   "private": true,
