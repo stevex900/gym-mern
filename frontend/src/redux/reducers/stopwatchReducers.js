@@ -1,4 +1,4 @@
-import { ActionTypes } from "./stopwatch.types";
+import { ActionTypes } from "../constants/stopwatchConstants";
 const INITIAL_STATE = {
   stopwatchActive: false,
   seriesMinutes: 0,

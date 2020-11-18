@@ -1,5 +1,5 @@
-import { ActionTypes } from "../arrangeTraining/arrangeTraining.types";
-import { ViewActionTypes } from "./viewTraining.types";
+import { ActionTypes } from "../constants/arrangeTrainingConstants";
+import { ViewActionTypes } from "../constants/viewTrainingConstants";
 const INITIAL_STATE = {
   number: 8,
   viewCurrentWorkout: [

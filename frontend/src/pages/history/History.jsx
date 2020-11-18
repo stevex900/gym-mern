@@ -1,6 +1,6 @@
 import React from "react";
 import { MainContainer } from "./history.styles";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../../components/button/Button.styles";
 import {
   WorkoutContainer,
@@ -13,11 +13,10 @@ import {
   ComparisonContainer,
   Container,
 } from "./history.styles";
-import {
-  selectHistoryTrainingItem,
-  selectHistoryTrainingNumber,
-} from "../../redux/history/history.selector";
-const History = ({ allTrainingsHistory }) => {
+
+const History = () => {
+  const historyTraining = useSelector((state) => state.historyTraining);
+  const { allTrainingsHistory } = historyTraining;
   const historyList = [...allTrainingsHistory];
 
   const historyWorkout = historyList.map((historyItem) => (
@@ -61,11 +60,9 @@ const History = ({ allTrainingsHistory }) => {
         ))}
       </WorkoutContainer>
     </HistoryContainer>
-   ));
+  ));
 
   return <MainContainer>{historyWorkout}</MainContainer>;
 };
-const mapStateToProps = (state) => ({
-  allTrainingsHistory: selectHistoryTrainingItem(state),
-});
-export default connect(mapStateToProps)(History);
+
+export default History;

@@ -1,4 +1,4 @@
-import { ActionTypes } from "./arrangeTraining.types";
+import { ActionTypes } from "../constants/arrangeTrainingConstants";
 export const setExerciseAction = (item) => ({
   type: ActionTypes.SET_EXERCISE_ACTION,
   payload: item,

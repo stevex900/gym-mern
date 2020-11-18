@@ -1,4 +1,4 @@
-import { ActionTypes } from "./stopwatch.types";
+import { ActionTypes } from "../constants/stopwatchConstants";
 export const showStopwatchChangeAction = (item) => ({
   type: ActionTypes.SHOW_OR_HIDE_STOPWATCH,
   payload: item,

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { finishExerciseAction } from "../../redux/actions/arrangeTrainingActions";
 import {
-  myScoreConfirmAction,
   finishTrainingAction,
-} from "../../redux/viewTraining/viewTraining.actions";
-import { selectViewTrainingCurrentWorkout } from "../../redux/viewTraining/viewTraining.selector";
+  myScoreConfirmAction,
+} from "../../redux/actions/viewTrainingActions";
+
 import {
   MainContainer,
   PrimaryContainer,
@@ -23,16 +24,13 @@ import {
   ExerciseDataItemContainer,
   ExerciseDataItem,
 } from "./viewTraining.styles";
-import { finishExerciseAction } from "../../redux/arrangeTraining/arrangeTraining.actions";
-const ViewTraining = ({
-  viewCurrentWorkout,
-  number,
-  myScoreConfirmAction,
-  finishTrainingAction,
-  finishExerciseAction,
-}) => {
+
+const ViewTraining = () => {
   // const [myScoreInputRepetitions, setMyScoreInputRepetitions] = useState([{name:'', value:""}]);
   // const [myScoreInputWeight, setMyScoreInputWeight] = useState([{name:'', value:""}]);
+  const viewTraining = useSelector((state) => state.viewTraining);
+  const { viewCurrentWorkout } = viewTraining;
+  const dispatch = useDispatch();
   const [myScoreInputRepetitions, setMyScoreInputRepetitions] = useState("");
   const [myScoreInputWeight, setMyScoreInputWeight] = useState("");
   const [myScoreInputSeries, setMyScoreInputSeries] = useState("");
@@ -93,7 +91,7 @@ const ViewTraining = ({
     ];
     const newWorkout = [...myDoneScore, ...remainedExercise];
 
-    myScoreConfirmAction(newWorkout);
+    dispatch(myScoreConfirmAction(newWorkout));
     setMyScoreInputRepetitions("");
     setMyScoreInputWeight("");
     // setMyScoreInputRepetitions([{name:'', value:''}]);
@@ -116,9 +114,9 @@ const ViewTraining = ({
 
     const viewCurrentWorkout = [];
 
-    finishTrainingAction(updateHistory);
-    myScoreConfirmAction(viewCurrentWorkout);
-    finishExerciseAction(viewCurrentWorkout);
+    dispatch(finishTrainingAction(updateHistory));
+    dispatch(myScoreConfirmAction(viewCurrentWorkout));
+    dispatch(finishExerciseAction(viewCurrentWorkout));
     alert(
       "Training has been finished. The workout creator and the current workout have been reset. Training saved in the archive"
     );
@@ -219,12 +217,5 @@ const ViewTraining = ({
     </MainContainer>
   );
 };
-const mapStateToProps = (state) => ({
-  viewCurrentWorkout: selectViewTrainingCurrentWorkout(state),
-});
-const mapDispatchToProps = (dispatch) => ({
-  myScoreConfirmAction: (item) => dispatch(myScoreConfirmAction(item)),
-  finishTrainingAction: (item) => dispatch(finishTrainingAction(item)),
-  finishExerciseAction: (item) => dispatch(finishExerciseAction(item)),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(ViewTraining);
+
+export default ViewTraining;

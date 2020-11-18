@@ -1,4 +1,4 @@
-import { ViewActionTypes } from "../viewTraining/viewTraining.types";
+import { ViewActionTypes } from "../constants/viewTrainingConstants";
 const INITIAL_STATE = {
   number: 8,
   allTrainingsHistory: [

@@ -11,7 +11,7 @@ import ArrangeTraining from "./pages/arrange-training/ArrangeTraining";
 import History from "./pages/history/History";
 import Start from "./pages/start/Start";
 import ViewTraining from "./pages/view-training/ViewTraining";
-import LogIn from "./components/log-in/LogIn";
+import LogIn from "./pages/login/LogIn";
 import "./App.css";
 
 const App = () => {

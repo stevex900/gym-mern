@@ -1,6 +1,6 @@
 {
   "homepage": "https://stevex900.github.io/gym/",
-  "proxy":"http://127.0.0.1:5000",
+  "proxy": "http://127.0.0.1:5000",
   "name": "gym",
   "version": "0.1.0",
   "private": true,
@@ -19,6 +19,7 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "styled-components": "^5.2.0"
   },

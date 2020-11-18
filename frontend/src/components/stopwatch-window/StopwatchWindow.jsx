@@ -1,21 +1,13 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  selectStopwatchSeries,
-  selectStopwatchWorkout,
-  selectStopwatchRest,
-  selectStopwatchSeriesMinutes,
-  selectStopwatchWorkoutMinutes,
-  selectStopwatchRestMinutes,
-} from "../../redux/stopwatch/stopwatch.selectors";
-import {
+  restChangeValueAction,
+  restChangeValueActionMinutes,
   seriesChangeValueAction,
   workoutChangeValueAction,
-  restChangeValueAction,
-  seriesChangeValueActionMinutes,
   workoutChangeValueActionMinutes,
-  restChangeValueActionMinutes,
-} from "../../redux/stopwatch/stopwatch.actions";
+} from "../../redux/actions/stopwatchActions";
+
 import {
   MainContainer,
   PrimaryContainer,
@@ -26,57 +18,53 @@ import {
   Button,
   Span,
 } from "./stopwatchWindow.styles";
-const StopwatchWindow = ({
-  seriesSeconds,
-  workoutSeconds,
-  restSeconds,
-  seriesMinutes,
-  workoutMinutes,
-  restMinutes,
-  seriesChangeValueAction,
-  restChangeValueAction,
-  workoutChangeValueAction,
-  seriesChangeValueActionMinutes,
-  workoutChangeValueActionMinutes,
-  restChangeValueActionMinutes,
-}) => {
+const StopwatchWindow = () => {
+  const stopwatch = useSelector((state) => state.stopwatch);
+  const {
+    seriesSeconds,
+    workoutSeconds,
+    seriesMinutes,
+    workoutMinutes,
+    restMinutes,
+    restSeconds,
+  } = stopwatch;
+  const dispatch = useDispatch();
   const handleSerieschange = (bindValue) => {
     if (bindValue === "substract") {
-      seriesChangeValueAction(--seriesSeconds);
+      dispatch(seriesChangeValueAction(--seriesSeconds));
     } else if (bindValue === "add") {
-      seriesChangeValueAction(++seriesSeconds);
+      dispatch(seriesChangeValueAction(++seriesSeconds));
     }
   };
 
   const handleWorkoutOrRestChange = (bindValue) => {
     if (bindValue === "workout-substract") {
       if (workoutSeconds > 0) {
-        workoutChangeValueAction(--workoutSeconds);
+        dispatch(workoutChangeValueAction(--workoutSeconds));
       } else if (workoutSeconds === 0) {
-        workoutChangeValueActionMinutes(--workoutMinutes);
-        workoutChangeValueAction((workoutSeconds = 59));
-        
+        dispatch(workoutChangeValueActionMinutes(--workoutMinutes));
+        dispatch(workoutChangeValueAction((workoutSeconds = 59)));
       }
     } else if (bindValue === "workout-add") {
       if (workoutSeconds < 59) {
-        workoutChangeValueAction(++workoutSeconds);
+        dispatch(workoutChangeValueAction(++workoutSeconds));
       } else if (workoutSeconds >= 59) {
-        workoutChangeValueAction((workoutSeconds = 0));
-        workoutChangeValueActionMinutes(++workoutMinutes);
+        dispatch(workoutChangeValueAction((workoutSeconds = 0)));
+        dispatch(workoutChangeValueActionMinutes(++workoutMinutes));
       }
     } else if (bindValue === "rest-substract") {
       if (restSeconds > 0) {
-        restChangeValueAction(--restSeconds);
+        dispatch(restChangeValueAction(--restSeconds));
       } else if (restSeconds === 0) {
-        restChangeValueActionMinutes(--restMinutes);
-        restChangeValueAction((restSeconds = 59));
+        dispatch(restChangeValueActionMinutes(--restMinutes));
+        dispatch(restChangeValueAction((restSeconds = 59)));
       }
     } else if (bindValue === "rest-add") {
       if (restSeconds < 59) {
-        restChangeValueAction(++restSeconds);
+        dispatch(restChangeValueAction(++restSeconds));
       } else if (restSeconds >= 59) {
-        restChangeValueAction((restSeconds = 0));
-        restChangeValueActionMinutes(++restMinutes);
+        dispatch(restChangeValueAction((restSeconds = 0)));
+        dispatch(restChangeValueActionMinutes(++restMinutes));
       }
     }
   };
@@ -84,10 +72,10 @@ const StopwatchWindow = ({
     console.log("interwal wystartowal");
 
     if (workoutSeconds > 0) {
-      workoutChangeValueAction(--workoutSeconds);
+      dispatch(workoutChangeValueAction(--workoutSeconds));
     } else if (workoutSeconds === 0) {
-      workoutChangeValueActionMinutes(--workoutMinutes);
-      workoutChangeValueAction((workoutSeconds = 59));
+      dispatch(workoutChangeValueActionMinutes(--workoutMinutes));
+      dispatch(workoutChangeValueAction((workoutSeconds = 59)));
     }
   };
   const stopWatchInterval = () => setInterval(stopwatchStartStop, 1000);
@@ -173,25 +161,5 @@ const StopwatchWindow = ({
     </MainContainer>
   );
 };
-const mapStateToProps = (state) => ({
-  seriesSeconds: selectStopwatchSeries(state),
-  workoutSeconds: selectStopwatchWorkout(state),
-  restSeconds: selectStopwatchRest(state),
 
-  seriesMinutes: selectStopwatchSeriesMinutes(state),
-  workoutMinutes: selectStopwatchWorkoutMinutes(state),
-  restMinutes: selectStopwatchRestMinutes(state),
-});
-const mapDispatchToProps = (dispatch) => ({
-  seriesChangeValueAction: (item) => dispatch(seriesChangeValueAction(item)),
-  restChangeValueAction: (item) => dispatch(restChangeValueAction(item)),
-  workoutChangeValueAction: (item) => dispatch(workoutChangeValueAction(item)),
-
-  seriesChangeValueActionMinutes: (item) =>
-    dispatch(seriesChangeValueActionMinutes(item)),
-  workoutChangeValueActionMinutes: (item) =>
-    dispatch(workoutChangeValueActionMinutes(item)),
-  restChangeValueActionMinutes: (item) =>
-    dispatch(restChangeValueActionMinutes(item)),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(StopwatchWindow);
+export default StopwatchWindow;

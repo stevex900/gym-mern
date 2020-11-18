@@ -1,4 +1,4 @@
-import { ViewActionTypes } from "./viewTraining.types";
+import { ViewActionTypes } from "../constants/viewTrainingConstants";
 export const numberChange = (item) => ({
   type: ViewActionTypes.FINISH_TRAINING_ACTION,
   payload: item,

@@ -1,4 +1,4 @@
-import { ActionTypes } from "./arrangeTraining.types";
+import { ActionTypes } from "../constants/arrangeTrainingConstants";
 const INITIAL_STATE = {
   number: 8,
   currentWorkout: [

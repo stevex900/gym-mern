@@ -5,10 +5,11 @@ import {
   NavLinkContainer as NavLink,
 } from "./menu.styles";
 import { Button } from "../button/Button.styles";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { showMenuChangeAction } from "../../redux/actions/navigationActions";
 
-import { showMenuChangeAction } from "../../redux/navigation/navigation.actions";
-const Menu = ({ showMenuChangeAction }) => {
+const Menu = () => {
+  const dispatch = useDispatch();
   const buttons = [
     { id: 1, name: "Arrange Training", path: "/arrangetraining" },
     { id: 2, name: "View Training", path: "/viewtraining" },
@@ -16,7 +17,7 @@ const Menu = ({ showMenuChangeAction }) => {
     { id: 4, name: "Start", path: "/", exact: true },
   ];
   const handleShowMenu = () => {
-    showMenuChangeAction(false);
+    dispatch(showMenuChangeAction(false));
   };
   return (
     <MenuContainer>
@@ -35,7 +36,5 @@ const Menu = ({ showMenuChangeAction }) => {
     </MenuContainer>
   );
 };
-const mapDispatchToProps = (dispatch) => ({
-  showMenuChangeAction: (item) => dispatch(showMenuChangeAction(item)),
-});
-export default connect(null, mapDispatchToProps)(Menu);
+
+export default Menu;

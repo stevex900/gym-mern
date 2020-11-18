@@ -2,21 +2,17 @@ import { Nav, LogInContainer } from "./navigation.styles";
 import { ReactComponent as Hamburger } from "../../assets/hamburgerS.svg";
 import Menu from "../menu/Menu";
 import React from "react";
-import { connect } from "react-redux";
-import { selectMenuItem } from "../../redux/navigation/navigation.selectors";
-import { selectStopwatchItem } from "../../redux/stopwatch/stopwatch.selectors";
-import { showStopwatchChangeAction } from "../../redux/stopwatch/stopwatch.actions";
-import { showMenuChangeAction } from "../../redux/navigation/navigation.actions.js";
+import { useDispatch, useSelector } from "react-redux";
+import { showMenuChangeAction } from "../../redux/actions/navigationActions";
+import { showStopwatchChangeAction } from "../../redux/actions/stopwatchActions";
 
-const Navigation = ({
-  showMenu,
-  showMenuChangeAction,
-  stopwatchActive,
-  showStopwatchChangeAction,
-}) => {
+const Navigation = () => {
+  const menu = useSelector((state) => state.menu);
+  const { showMenu, stopwatchActive } = menu;
+  const dispatch = useDispatch();
   const handleShowMenu = () => {
-    showMenuChangeAction(!showMenu);
-    showStopwatchChangeAction(false);
+    dispatch(showMenuChangeAction(!showMenu));
+    dispatch(showStopwatchChangeAction(false));
   };
   return (
     <Nav>
@@ -25,13 +21,5 @@ const Navigation = ({
     </Nav>
   );
 };
-const mapStateToProps = (state) => ({
-  showMenu: selectMenuItem(state),
-  stopwatchActive: selectStopwatchItem(state),
-});
-const mapDispatchToProps = (dispatch) => ({
-  showMenuChangeAction: (item) => dispatch(showMenuChangeAction(item)),
-  showStopwatchChangeAction: (item) =>
-    dispatch(showStopwatchChangeAction(item)),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+
+export default Navigation;

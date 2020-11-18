@@ -1,4 +1,4 @@
-import { ActionTypes } from "./navigation.types";
+import { ActionTypes } from "../constants/navigationConstants";
 const INITIAL_STATE = {
   showMenu: false,
 };

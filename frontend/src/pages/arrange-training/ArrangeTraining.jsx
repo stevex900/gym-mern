@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
+  numberChange,
   setExerciseAction,
   setTrainingAction,
-  numberChange,
-} from "../../redux/arrangeTraining/arrangeTraining.actions";
-import {
-  selectArrangeTrainingCurrentWorkout,
-  selectArrangeTrainingNumber,
-} from "../../redux/arrangeTraining/arrangeTraining.selector";
+} from "../../redux/actions/arrangeTrainingActions";
+
 import {
   MainContainer,
   PrimaryContainer,
@@ -29,13 +26,7 @@ import {
   Button,
   ButtonContainer,
 } from "./arrangeTraining.styles";
-const ArrangeTraining = ({
-  currentWorkout,
-  number,
-  setExerciseAction,
-  setTrainingAction,
-  numberChange,
-}) => {
+const ArrangeTraining = () => {
   const [inputExerciseName, setInputExerciseName] = useState("");
   const [inputSeries, setInputSeries] = useState("");
   const [inputRepetitions1, setInputRepetitions1] = useState("");
@@ -46,6 +37,11 @@ const ArrangeTraining = ({
   const [inputWeight3, setInputWeight3] = useState("");
   const [inputRepetitions4, setInputRepetitions4] = useState("");
   const [inputWeight4, setInputWeight4] = useState("");
+
+  const arrangeTraining = useSelector((state) => state.arrangeTraining);
+  const { currentWorkout, number } = arrangeTraining;
+
+  const dispatch = useDispatch();
 
   const handleInputChange = (bindValue, e) => {
     if (bindValue === "exercise-name") {
@@ -146,7 +142,7 @@ const ArrangeTraining = ({
         },
       ],
     };
-    numberChange(number + 1);
+    dispatch(numberChange(number + 1));
     setInputExerciseName("");
     setInputSeries("");
     setInputRepetitions1("");
@@ -159,20 +155,19 @@ const ArrangeTraining = ({
     setInputWeight4("");
     if (inputExerciseName) {
       if (inputSeries === "1") {
-        setExerciseAction(oneSeries);
+        dispatch(setExerciseAction(oneSeries));
       } else if (inputSeries === "2") {
-        setExerciseAction(twoSeries);
+        dispatch(setExerciseAction(twoSeries));
       } else if (inputSeries === "3") {
-        setExerciseAction(threeSeries);
+        dispatch(setExerciseAction(threeSeries));
       } else if (inputSeries === "4") {
-        setExerciseAction(fourSeries);
+        dispatch(setExerciseAction(fourSeries));
       } else {
         alert("Select amount of series");
       }
     } else {
       alert("Enter a name for the exercise");
     }
-    
   };
   const currentWorkouts = [...currentWorkout];
   const currentWorkoutsList = currentWorkouts.map((workout) => (
@@ -195,8 +190,8 @@ const ArrangeTraining = ({
     </WorkoutContainer>
   ));
   const handleSetTraining = () => {
-    setTrainingAction(currentWorkouts);
-    alert("New workout has been created and added")
+    dispatch(setTrainingAction(currentWorkouts));
+    alert("New workout has been created and added");
   };
   return (
     <MainContainer>
@@ -303,13 +298,5 @@ const ArrangeTraining = ({
     </MainContainer>
   );
 };
-const mapStateToProps = (state) => ({
-  currentWorkout: selectArrangeTrainingCurrentWorkout(state),
-  number: selectArrangeTrainingNumber(state),
-});
-const mapDispatchToProps = (dispatch) => ({
-  setExerciseAction: (item) => dispatch(setExerciseAction(item)),
-  setTrainingAction: (item) => dispatch(setTrainingAction(item)),
-  numberChange: (item) => dispatch(numberChange(item)),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(ArrangeTraining);
+
+export default ArrangeTraining;
