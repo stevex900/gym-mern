@@ -19,7 +19,7 @@ app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
 
-app.use("/users", userRouter);
+app.use("/", userRouter);
 
 app.get("/", (req, res) => {
   res.send("Server is ready");

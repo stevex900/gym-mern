@@ -13,6 +13,7 @@ import Start from "./pages/start/Start";
 import ViewTraining from "./pages/view-training/ViewTraining";
 import LogIn from "./pages/login/LogIn";
 import "./App.css";
+import Register from "./pages/register/Register";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/viewtraining" component={ViewTraining} />
           <Route path="/history" component={History} />
           <Route path="/login" component={LogIn} />
+          <Route path="/register" component={Register} />
         </SecondaryContainer>
       </MainContainer>
     </>

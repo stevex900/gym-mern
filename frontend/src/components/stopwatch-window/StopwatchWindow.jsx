@@ -20,7 +20,7 @@ import {
 } from "./stopwatchWindow.styles";
 const StopwatchWindow = () => {
   const stopwatch = useSelector((state) => state.stopwatch);
-  const {
+  let {
     seriesSeconds,
     workoutSeconds,
     seriesMinutes,
