@@ -26,10 +26,16 @@ import {
 } from "./viewTraining.styles";
 
 const ViewTraining = () => {
-  // const [myScoreInputRepetitions, setMyScoreInputRepetitions] = useState([{name:'', value:""}]);
-  // const [myScoreInputWeight, setMyScoreInputWeight] = useState([{name:'', value:""}]);
-  const viewTraining = useSelector((state) => state.viewTraining);
-  const { viewCurrentWorkout } = viewTraining;
+  const viewTrainingg = useSelector((state) => state.viewTraining);
+  const { viewCurrentWorkout } = viewTrainingg;
+
+  // const userSignin = useSelector((state) => state.userSignin);
+  // const {
+  //   userInfo: {
+  //     viewTraining: { viewCurrentWorkout },
+  //   },
+  // } = userSignin;
+
   const dispatch = useDispatch();
   const [myScoreInputRepetitions, setMyScoreInputRepetitions] = useState("");
   const [myScoreInputWeight, setMyScoreInputWeight] = useState("");
@@ -94,8 +100,6 @@ const ViewTraining = () => {
     dispatch(myScoreConfirmAction(newWorkout));
     setMyScoreInputRepetitions("");
     setMyScoreInputWeight("");
-    // setMyScoreInputRepetitions([{name:'', value:''}]);
-    // setMyScoreInputWeight([{name:'', value:''}]);
 
     console.log("repetitions-after", myScoreInputRepetitions);
     console.log("weight-after", myScoreInputWeight);
@@ -137,20 +141,6 @@ const ViewTraining = () => {
                 </ExerciseDataItem>
                 <ExerciseDataItem>
                   {`${item.weight && item.weight + "kg"}`}{" "}
-                  {/* <Input
-                name={ workout.id.toString()+ item.series.toString()+ "repetitions" }
-                onChange={handleInputChange.bind( this , workout.id.toString()+ item.series.toString()+ "repetitions" )} 
-                type="number"
-                placeholder="My x"
-                value={myScoreInputRepetitions[0].value}
-              />
-              <Input
-                 name={ workout.id.toString()+ item.series.toString()+ "weight" }
-                onChange={handleInputChange.bind(this,workout.id.toString()+ item.series.toString()+ "weight")} 
-                type="number"
-                placeholder="My kg"
-                value={myScoreInputWeight[0].value}
-              /> */}
                 </ExerciseDataItem>
                 <SmallButton
                   onClick={() =>
@@ -214,6 +204,7 @@ const ViewTraining = () => {
       <ButtonContainer>
         <Button onClick={handleFinished}>Finished</Button>
       </ButtonContainer>
+      {/* <div onClick={() => console.log(viewTraining)}>TEST:</div> */}
     </MainContainer>
   );
 };

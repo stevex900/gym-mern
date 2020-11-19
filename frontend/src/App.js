@@ -9,6 +9,7 @@ import {
 import Header from "./components/header/Header";
 import ArrangeTraining from "./pages/arrange-training/ArrangeTraining";
 import History from "./pages/history/History";
+import { useDispatch, useSelector } from "react-redux";
 import Start from "./pages/start/Start";
 import ViewTraining from "./pages/view-training/ViewTraining";
 import LogIn from "./pages/login/LogIn";
@@ -16,6 +17,8 @@ import "./App.css";
 import Register from "./pages/register/Register";
 
 const App = () => {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
   return (
     <>
       <MainContainer>
@@ -26,6 +29,7 @@ const App = () => {
           <Route path="/" component={Start} exact={true} />
           <Route path="/arrangetraining" component={ArrangeTraining} />
           <Route path="/viewtraining" component={ViewTraining} />
+          {/* {userInfo && <Route path="/viewtraining" component={ViewTraining} />} */}
           <Route path="/history" component={History} />
           <Route path="/login" component={LogIn} />
           <Route path="/register" component={Register} />

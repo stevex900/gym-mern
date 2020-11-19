@@ -23,7 +23,7 @@ const Header = ({ currentUser }) => {
         {userInfo ? (
           <NavLink onClick={signoutHandler} to="/login">
             <LogInContainer>
-              <Span>Log out</Span>
+              <Span>Log out {userInfo.name}</Span>
             </LogInContainer>
           </NavLink>
         ) : (

@@ -10,7 +10,7 @@ const userRouter = express.Router();
 userRouter.get(
   "/seed",
   expressAsyncHandler(async (req, res) => {
-    // await User.remove({});
+    await User.remove({});
     const createUsers = await User.insertMany(data.users);
     res.send({ createUsers });
   })
@@ -27,6 +27,8 @@ userRouter.post(
           name: user.name,
           email: user.email,
           isAdmin: user.isAdmin,
+          viewTraining: user.viewTraining,
+          historyTraining: user.historyTraining,
           token: generateToken(user),
         });
         return;

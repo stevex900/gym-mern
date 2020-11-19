@@ -1,4 +1,5 @@
 import { ViewActionTypes } from "../constants/viewTrainingConstants";
+import Axios from "axios";
 export const numberChange = (item) => ({
   type: ViewActionTypes.FINISH_TRAINING_ACTION,
   payload: item,
