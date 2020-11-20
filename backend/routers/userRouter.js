@@ -17,6 +17,28 @@ userRouter.get(
 );
 
 userRouter.post(
+  "/arrangetraining",
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findOneAndUpdate({
+      viewTraining: { viewCurrentWorkout: req.body.viewTraining },
+    });
+    if (user) {
+      res.send({
+        viewTraining: user.viewTraining,
+      });
+      console.log(
+        "na pewno dziala?",
+        "REQ  ",
+        req.body,
+        "    USER ",
+        user.viewTraining,
+        "dziala!"
+      );
+    }
+  })
+);
+521840;
+userRouter.post(
   "/login",
   expressAsyncHandler(async (req, res) => {
     const user = await User.findOne({ email: req.body.email });

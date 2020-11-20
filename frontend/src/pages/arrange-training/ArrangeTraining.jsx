@@ -191,6 +191,7 @@ const ArrangeTraining = () => {
   ));
   const handleSetTraining = () => {
     dispatch(setTrainingAction(currentWorkouts));
+    console.log(currentWorkouts);
     alert("New workout has been created and added");
   };
   return (

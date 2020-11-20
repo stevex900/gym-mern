@@ -26,15 +26,15 @@ import {
 } from "./viewTraining.styles";
 
 const ViewTraining = () => {
-  const viewTrainingg = useSelector((state) => state.viewTraining);
-  const { viewCurrentWorkout } = viewTrainingg;
+  // const viewTrainingg = useSelector((state) => state.viewTraining);
+  // const { viewCurrentWorkout } = viewTrainingg;
 
-  // const userSignin = useSelector((state) => state.userSignin);
-  // const {
-  //   userInfo: {
-  //     viewTraining: { viewCurrentWorkout },
-  //   },
-  // } = userSignin;
+  const userSignin = useSelector((state) => state.userSignin);
+  const {
+    userInfo: {
+      viewTraining: { viewCurrentWorkout },
+    },
+  } = userSignin;
 
   const dispatch = useDispatch();
   const [myScoreInputRepetitions, setMyScoreInputRepetitions] = useState("");
