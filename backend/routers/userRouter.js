@@ -16,6 +16,41 @@ userRouter.get(
   })
 );
 
+// userRouter.put(
+//   "/viewtraining/:id",
+//   expressAsyncHandler(async (req, res) => {
+//     const user = await User.findByIdAndUpdate(req.params.id, {
+//       viewTraining: { viewCurrentWorkout: req.body.viewTraining },
+//     });
+//     console.log("@USER@", user);
+//     res.send("Added new value to database");
+//   })
+// );
+
+userRouter.put(
+  "/viewtraining/:id",
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findByIdAndUpdate(req.params.id, {
+      viewTraining: { viewCurrentWorkout: req.body.viewTraining },
+    });
+    if (user) {
+      res.send({
+        viewTraining: user.viewTraining,
+      });
+      console.log(
+        "userem jest :",
+        user,
+        "na pewno dziala?",
+        "REQ  ",
+        req.body,
+        "    USER ",
+        user.viewTraining,
+        "dziala!"
+      );
+    }
+  })
+);
+
 userRouter.put(
   "/arrangetraining/:id",
   expressAsyncHandler(async (req, res) => {
@@ -39,7 +74,7 @@ userRouter.put(
     }
   })
 );
-521840;
+
 userRouter.post(
   "/login",
   expressAsyncHandler(async (req, res) => {

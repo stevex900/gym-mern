@@ -97,7 +97,7 @@ const ViewTraining = () => {
     ];
     const newWorkout = [...myDoneScore, ...remainedExercise];
 
-    dispatch(myScoreConfirmAction(newWorkout));
+    dispatch(myScoreConfirmAction(newWorkout, userSignin.userInfo._id));
     setMyScoreInputRepetitions("");
     setMyScoreInputWeight("");
 

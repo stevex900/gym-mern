@@ -1,4 +1,5 @@
 import { ActionTypes } from "../constants/arrangeTrainingConstants";
+import { ViewActionTypes } from "../constants/viewTrainingConstants";
 import {
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
@@ -33,6 +34,14 @@ export const userSigninReducer = (state = {}, action) => {
     case USER_SIGNOUT:
       return {};
     case ActionTypes.SET_TRAINING_ACTION:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          viewTraining: { viewCurrentWorkout: action.payload },
+        },
+      };
+    case ViewActionTypes.PUT_MY_SCORE:
       return {
         ...state,
         userInfo: {
