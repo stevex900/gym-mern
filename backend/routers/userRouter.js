@@ -16,10 +16,10 @@ userRouter.get(
   })
 );
 
-userRouter.post(
-  "/arrangetraining",
+userRouter.put(
+  "/arrangetraining/:id",
   expressAsyncHandler(async (req, res) => {
-    const user = await User.findOneAndUpdate({
+    const user = await User.findByIdAndUpdate(req.params.id, {
       viewTraining: { viewCurrentWorkout: req.body.viewTraining },
     });
     if (user) {
@@ -27,6 +27,8 @@ userRouter.post(
         viewTraining: user.viewTraining,
       });
       console.log(
+        "userem jest :",
+        user,
         "na pewno dziala?",
         "REQ  ",
         req.body,
@@ -65,6 +67,40 @@ userRouter.post(
     const user = new User({
       name: req.body.name,
       email: req.body.email,
+      viewTraining: {
+        number: 8,
+        viewCurrentWorkout: [
+          {
+            id: null,
+            exerciseName: "",
+            exercise: [{ series: null, repetitions: "", weight: "" }],
+          },
+        ],
+      },
+      historyTraining: {
+        number: 8,
+        allTrainingsHistory: [
+          {
+            id: null,
+            date: "",
+            history: [
+              {
+                id: 9,
+                exerviseName: "",
+                exercise: [
+                  {
+                    series: null,
+                    repetitions: "",
+                    weight: "",
+                    myRepetitions: "",
+                    myWeight: "",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
       password: bcrypt.hashSync(req.body.password, 8),
     });
     const createdUser = await user.save();

@@ -8,10 +8,11 @@ export const finishExerciseAction = (item) => ({
   type: ActionTypes.FINISH_EXERCISE_ACTION,
   payload: item,
 });
-export const setTrainingAction = (item) => async (dispatch) => {
+export const setTrainingAction = (item, id) => async (dispatch) => {
   try {
-    const { data } = await Axios.post("/arrangetraining", {
+    const { data } = await Axios.put(`/arrangetraining/${id}`, {
       viewTraining: item,
+      id: id,
     });
     dispatch({
       type: ActionTypes.SET_TRAINING_ACTION,
