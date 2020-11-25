@@ -7,6 +7,8 @@ import { showMenuChangeAction } from "../../redux/actions/navigationActions";
 import { showStopwatchChangeAction } from "../../redux/actions/stopwatchActions";
 
 const Navigation = () => {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
   const menu = useSelector((state) => state.menu);
   const { showMenu, stopwatchActive } = menu;
   const dispatch = useDispatch();
@@ -16,7 +18,7 @@ const Navigation = () => {
   };
   return (
     <Nav>
-      <Hamburger onClick={handleShowMenu} />
+      {userInfo && <Hamburger onClick={handleShowMenu} />}
       {showMenu && <Menu />}
     </Nav>
   );

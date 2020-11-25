@@ -15,8 +15,15 @@ import {
 } from "./history.styles";
 
 const History = () => {
-  const historyTraining = useSelector((state) => state.historyTraining);
-  const { allTrainingsHistory } = historyTraining;
+  const userSignin = useSelector((state) => state.userSignin);
+  const {
+    userInfo: {
+      historyTraining: { allTrainingsHistory },
+    },
+  } = userSignin;
+
+  // const historyTraining = useSelector((state) => state.historyTraining);
+  // const { allTrainingsHistory } = historyTraining;
   const historyList = [...allTrainingsHistory];
 
   const historyWorkout = historyList.map((historyItem) => (
@@ -62,7 +69,12 @@ const History = () => {
     </HistoryContainer>
   ));
 
-  return <MainContainer>{historyWorkout}</MainContainer>;
+  return (
+    <MainContainer>
+      {historyWorkout}
+      <button onClick={() => console.log(historyList)}>TEST</button>
+    </MainContainer>
+  );
 };
 
 export default History;

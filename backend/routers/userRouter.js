@@ -16,6 +16,92 @@ userRouter.get(
   })
 );
 
+// userRouter.put(
+//   "/viewtraining/:id",
+//   expressAsyncHandler(async (req, res) => {
+//     const user = await User.findByIdAndUpdate(req.params.id, {
+//       historyTraining: { allTrainingsHistory: req.body.historyTraining },
+//     });
+//   })
+// );
+
+userRouter.put(
+  "/viewtraining/:id",
+  expressAsyncHandler(async (req, res) => {
+    if (req.body.viewTraining) {
+      const user = await User.findByIdAndUpdate(req.params.id, {
+        viewTraining: { viewCurrentWorkout: req.body.viewTraining },
+      });
+
+      if (user) {
+        res.send({
+          viewTraining: user.viewTraining,
+        });
+        console.log(
+          "userem jest :",
+          user,
+          "na pewno dziala?",
+          "REQ  ",
+          req.body,
+          "    USER ",
+          user.viewTraining,
+          "dziala!"
+        );
+      }
+    } else if (req.body.historyTraining) {
+      const data = await User.findById(req.params.id);
+      const user = await User.findByIdAndUpdate(req.params.id, {
+        historyTraining: {
+          allTrainingsHistory: [
+            ...data.historyTraining.allTrainingsHistory,
+            ...req.body.historyTraining,
+          ],
+        },
+      });
+      console.log("@@@DATA@@@", data.historyTraining.allTrainingsHistory[0]);
+      if (user) {
+        res.send({
+          historyTraining: user.historyTraining,
+        });
+        console.log(
+          "userem jest :",
+          user,
+          "na pewno dziala?",
+          "REQ  ",
+          req.body,
+          "    USER ",
+          user.historyTraining,
+          "dziala!"
+        );
+      }
+    }
+  })
+);
+
+userRouter.put(
+  "/arrangetraining/:id",
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findByIdAndUpdate(req.params.id, {
+      viewTraining: { viewCurrentWorkout: req.body.viewTraining },
+    });
+    if (user) {
+      res.send({
+        viewTraining: user.viewTraining,
+      });
+      console.log(
+        "userem jest :",
+        user,
+        "na pewno dziala?",
+        "REQ  ",
+        req.body,
+        "    USER ",
+        user.viewTraining,
+        "dziala!"
+      );
+    }
+  })
+);
+
 userRouter.post(
   "/login",
   expressAsyncHandler(async (req, res) => {
@@ -43,6 +129,40 @@ userRouter.post(
     const user = new User({
       name: req.body.name,
       email: req.body.email,
+      viewTraining: {
+        number: 8,
+        viewCurrentWorkout: [
+          {
+            id: null,
+            exerciseName: "",
+            exercise: [{ series: null, repetitions: "", weight: "" }],
+          },
+        ],
+      },
+      historyTraining: {
+        number: 8,
+        allTrainingsHistory: [
+          {
+            id: null,
+            date: "",
+            history: [
+              {
+                id: 9,
+                exerviseName: "",
+                exercise: [
+                  {
+                    series: null,
+                    repetitions: "",
+                    weight: "",
+                    myRepetitions: "",
+                    myWeight: "",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
       password: bcrypt.hashSync(req.body.password, 8),
     });
     const createdUser = await user.save();

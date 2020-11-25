@@ -10,11 +10,20 @@ import { showMenuChangeAction } from "../../redux/actions/navigationActions";
 
 const Menu = () => {
   const dispatch = useDispatch();
+  const userSignin = useSelector((state) => state.userSignin);
   const buttons = [
-    { id: 1, name: "Arrange Training", path: "/arrangetraining" },
-    { id: 2, name: "View Training", path: "/viewtraining" },
-    { id: 3, name: "History", path: "/history" },
-    { id: 4, name: "Start", path: "/", exact: true },
+    {
+      id: 1,
+      name: "Arrange Training",
+      path: `/arrangetraining/${userSignin.userInfo._id}`,
+    },
+    {
+      id: 2,
+      name: "View Training",
+      path: `/viewtraining/${userSignin.userInfo._id}`,
+    },
+    { id: 3, name: "History", path: `/history/${userSignin.userInfo._id}` },
+    { id: 4, name: "Start", path: `/${userSignin.userInfo._id}`, exact: true },
   ];
   const handleShowMenu = () => {
     dispatch(showMenuChangeAction(false));

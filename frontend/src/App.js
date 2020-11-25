@@ -26,11 +26,13 @@ const App = () => {
           <Header />
         </PrimaryContainer>
         <SecondaryContainer>
-          <Route path="/" component={Start} exact={true} />
-          <Route path="/arrangetraining" component={ArrangeTraining} />
-          <Route path="/viewtraining" component={ViewTraining} />
-          {/* {userInfo && <Route path="/viewtraining" component={ViewTraining} />} */}
-          <Route path="/history" component={History} />
+          <Route path="/:id" component={Start} exact={true} />
+          <Route path="/arrangetraining/:id" component={ArrangeTraining} />
+          {/* <Route path="/viewtraining" component={ViewTraining} /> */}
+          {userInfo && (
+            <Route path="/viewtraining/:id" component={ViewTraining} />
+          )}
+          <Route path="/history/:id" component={History} />
           <Route path="/login" component={LogIn} />
           <Route path="/register" component={Register} />
         </SecondaryContainer>

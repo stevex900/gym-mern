@@ -17,6 +17,7 @@ mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/gym", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
+  useFindAndModify: false,
 });
 
 app.use((err, req, res, next) => {

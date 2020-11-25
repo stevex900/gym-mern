@@ -50,6 +50,32 @@ const data = {
               },
             ],
           },
+          {
+            id: 3,
+            date: "19.11.2020",
+            history: [
+              {
+                id: 9,
+                exerviseName: "Plecy",
+                exercise: [
+                  {
+                    series: 1,
+                    repetitions: "5",
+                    weight: "3",
+                    myRepetitions: "2",
+                    myWeight: "4",
+                  },
+                  {
+                    series: 2,
+                    repetitions: "5",
+                    weight: "3",
+                    myRepetitions: "2",
+                    myWeight: "4",
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
     },

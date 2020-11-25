@@ -12,16 +12,11 @@ import {
 import { viewTrainingReducer } from "./reducers/viewTrainingReducers";
 
 const initialState = {
-  //   userSignin: {
-  //     userInfo: localStorage.getItem("userInfo")
-  //       ? JSON.parse(localStorage.getItem("userInfo"))
-  //       : null,
-  //   },
-  //   cart: {
-  //     cartItems: localStorage.getItem("cartItems")
-  //       ? JSON.parse(localStorage.getItem("cartItems"))
-  //       : [],
-  //   },
+  userSignin: {
+    userInfo: localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : null,
+  },
 };
 const middlewares = [logger, thunk];
 const reducer = combineReducers({

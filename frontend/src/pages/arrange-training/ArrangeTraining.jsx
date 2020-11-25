@@ -38,6 +38,8 @@ const ArrangeTraining = () => {
   const [inputRepetitions4, setInputRepetitions4] = useState("");
   const [inputWeight4, setInputWeight4] = useState("");
 
+  const userSignin = useSelector((state) => state.userSignin);
+
   const arrangeTraining = useSelector((state) => state.arrangeTraining);
   const { currentWorkout, number } = arrangeTraining;
 
@@ -190,7 +192,8 @@ const ArrangeTraining = () => {
     </WorkoutContainer>
   ));
   const handleSetTraining = () => {
-    dispatch(setTrainingAction(currentWorkouts));
+    dispatch(setTrainingAction(currentWorkouts, userSignin.userInfo._id));
+    console.log(currentWorkouts);
     alert("New workout has been created and added");
   };
   return (
