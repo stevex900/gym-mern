@@ -4,22 +4,6 @@ export const numberChange = (item) => ({
   type: ViewActionTypes.FINISH_TRAINING_ACTION,
   payload: item,
 });
-// export const myScoreConfirmAction = (item, id) => async (dispatch) => {
-//   try {
-//     const { data } = await Axios.put(`/viewtraining/${id}`, {
-//       viewTraining: item,
-//       id: id,
-//     });
-//     dispatch({
-//       type: ViewActionTypes.PUT_MY_SCORE,
-//       payload: item,
-//     });
-//     console.log("Sprawdzanie axios", data);
-//     localStorage.setItem("viewTraining", JSON.stringify(data));
-//   } catch (error) {
-//     console.log("Nie działa");
-//   }
-// };
 
 export const myScoreConfirmAction = (item, id) => async (dispatch) => {
   dispatch({
@@ -31,7 +15,6 @@ export const myScoreConfirmAction = (item, id) => async (dispatch) => {
   try {
     const { data } = await Axios.put(`/viewtraining/${id}`, {
       viewTraining: item,
-      // id: id,
     });
 
     console.log("Sprawdzanie axios", data);
@@ -41,7 +24,18 @@ export const myScoreConfirmAction = (item, id) => async (dispatch) => {
   }
 };
 
-export const finishTrainingAction = (item) => ({
-  type: ViewActionTypes.FINISH_TRAINING,
-  payload: item,
-});
+export const finishTrainingAction = (item, id) => async (dispatch) => {
+  try {
+    const { data } = await Axios.put(`/viewtraining/${id}`, {
+      historyTraining: item,
+    });
+    dispatch({
+      type: ViewActionTypes.FINISH_TRAINING_ACTION,
+      payload: item,
+    });
+    console.log("Sprawdzanie axios", data);
+    localStorage.setItem("viewTraining", JSON.stringify(data));
+  } catch (error) {
+    console.log("nie działa");
+  }
+};

@@ -20,33 +20,60 @@ userRouter.get(
 //   "/viewtraining/:id",
 //   expressAsyncHandler(async (req, res) => {
 //     const user = await User.findByIdAndUpdate(req.params.id, {
-//       viewTraining: { viewCurrentWorkout: req.body.viewTraining },
+//       historyTraining: { allTrainingsHistory: req.body.historyTraining },
 //     });
-//     console.log("@USER@", user);
-//     res.send("Added new value to database");
 //   })
 // );
 
 userRouter.put(
   "/viewtraining/:id",
   expressAsyncHandler(async (req, res) => {
-    const user = await User.findByIdAndUpdate(req.params.id, {
-      viewTraining: { viewCurrentWorkout: req.body.viewTraining },
-    });
-    if (user) {
-      res.send({
-        viewTraining: user.viewTraining,
+    if (req.body.viewTraining) {
+      const user = await User.findByIdAndUpdate(req.params.id, {
+        viewTraining: { viewCurrentWorkout: req.body.viewTraining },
       });
-      console.log(
-        "userem jest :",
-        user,
-        "na pewno dziala?",
-        "REQ  ",
-        req.body,
-        "    USER ",
-        user.viewTraining,
-        "dziala!"
-      );
+
+      if (user) {
+        res.send({
+          viewTraining: user.viewTraining,
+        });
+        console.log(
+          "userem jest :",
+          user,
+          "na pewno dziala?",
+          "REQ  ",
+          req.body,
+          "    USER ",
+          user.viewTraining,
+          "dziala!"
+        );
+      }
+    } else if (req.body.historyTraining) {
+      const data = await User.findById(req.params.id);
+      const user = await User.findByIdAndUpdate(req.params.id, {
+        historyTraining: {
+          allTrainingsHistory: [
+            ...data.historyTraining.allTrainingsHistory,
+            ...req.body.historyTraining,
+          ],
+        },
+      });
+      console.log("@@@DATA@@@", data.historyTraining.allTrainingsHistory[0]);
+      if (user) {
+        res.send({
+          historyTraining: user.historyTraining,
+        });
+        console.log(
+          "userem jest :",
+          user,
+          "na pewno dziala?",
+          "REQ  ",
+          req.body,
+          "    USER ",
+          user.historyTraining,
+          "dziala!"
+        );
+      }
     }
   })
 );

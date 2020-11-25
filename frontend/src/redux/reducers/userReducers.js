@@ -49,6 +49,19 @@ export const userSigninReducer = (state = {}, action) => {
           viewTraining: { viewCurrentWorkout: action.payload },
         },
       };
+    case ViewActionTypes.FINISH_TRAINING_ACTION:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          historyTraining: {
+            allTrainingsHistory: [
+              ...state.userInfo.historyTraining.allTrainingsHistory,
+              ...action.payload,
+            ],
+          },
+        },
+      };
     default:
       return state;
   }

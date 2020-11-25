@@ -81,8 +81,6 @@ const ViewTraining = () => {
       weight: deletedSeries[0][0].weight,
       myRepetitions: myScoreInputRepetitions,
       myWeight: myScoreInputWeight,
-      // myRepetitions: myScoreInputRepetitions[0].value,
-      // myWeight: myScoreInputWeight[0].value,
     };
 
     let remainedExercise = viewCurrentWorkouts.filter((item) => item.id !== id);
@@ -110,17 +108,19 @@ const ViewTraining = () => {
 
     const currentTime = time;
 
-    const updateHistory = {
-      id: 3,
-      date: currentTime,
-      history: viewCurrentWorkouts,
-    };
+    const updateHistory = [
+      {
+        id: 3,
+        date: currentTime,
+        history: viewCurrentWorkouts,
+      },
+    ];
 
     const viewCurrentWorkout = [];
 
-    dispatch(finishTrainingAction(updateHistory));
-    dispatch(myScoreConfirmAction(viewCurrentWorkout));
-    dispatch(finishExerciseAction(viewCurrentWorkout));
+    dispatch(finishTrainingAction(updateHistory, userSignin.userInfo._id));
+    dispatch(myScoreConfirmAction(viewCurrentWorkout, userSignin.userInfo._id));
+    dispatch(finishExerciseAction(viewCurrentWorkout, userSignin.userInfo._id));
     alert(
       "Training has been finished. The workout creator and the current workout have been reset. Training saved in the archive"
     );
@@ -191,20 +191,17 @@ const ViewTraining = () => {
         type="number"
         placeholder="My Repetitions (X)"
         value={myScoreInputRepetitions}
-        //  value={myScoreInputRepetitions[0].value}
       />
       <Input
         onChange={handleInputChange.bind(this, "weight")}
         type="number"
         placeholder="My Burden (KG)"
         value={myScoreInputWeight}
-        //  value={myScoreInputWeight[0].value}
       />
       <PrimaryContainer>{viewCurrentWorkoutsList}</PrimaryContainer>
       <ButtonContainer>
         <Button onClick={handleFinished}>Finished</Button>
       </ButtonContainer>
-      {/* <div onClick={() => console.log(viewTraining)}>TEST:</div> */}
     </MainContainer>
   );
 };
