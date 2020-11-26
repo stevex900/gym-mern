@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import Navigation from "./components/navigation/Navigation";
+import React from "react";
+
 import { Route } from "react-router-dom";
 import {
   PrimaryContainer,
@@ -9,7 +9,7 @@ import {
 import Header from "./components/header/Header";
 import ArrangeTraining from "./pages/arrange-training/ArrangeTraining";
 import History from "./pages/history/History";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Start from "./pages/start/Start";
 import ViewTraining from "./pages/view-training/ViewTraining";
 import LogIn from "./pages/login/LogIn";

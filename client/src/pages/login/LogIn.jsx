@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { Button } from "../../components/button/Button.styles";
+
 import { signin } from "../../redux/actions/userActions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const LogIn = () => {
@@ -15,8 +15,8 @@ const LogIn = () => {
       setPassword(e.target.value);
     }
   };
-  const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo, loading, error } = userSignin;
+  // const userSignin = useSelector((state) => state.userSignin);
+  // const { userInfo, loading, error } = userSignin;
   const dispatch = useDispatch();
 
   const handleLogIn = (e) => {

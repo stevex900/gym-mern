@@ -23,7 +23,7 @@ const StopwatchWindow = () => {
   let {
     seriesSeconds,
     workoutSeconds,
-    seriesMinutes,
+
     workoutMinutes,
     restMinutes,
     restSeconds,

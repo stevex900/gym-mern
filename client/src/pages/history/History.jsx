@@ -1,7 +1,7 @@
 import React from "react";
 import { MainContainer } from "./history.styles";
-import { useDispatch, useSelector } from "react-redux";
-import { Button } from "../../components/button/Button.styles";
+import { useSelector } from "react-redux";
+
 import {
   WorkoutContainer,
   WorkoutTimeContainer,

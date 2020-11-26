@@ -1,4 +1,4 @@
-import { Nav, LogInContainer } from "./navigation.styles";
+import { Nav } from "./navigation.styles";
 import { ReactComponent as Hamburger } from "../../assets/hamburgerS.svg";
 import Menu from "../menu/Menu";
 import React from "react";
@@ -10,7 +10,7 @@ const Navigation = () => {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const menu = useSelector((state) => state.menu);
-  const { showMenu, stopwatchActive } = menu;
+  const { showMenu } = menu;
   const dispatch = useDispatch();
   const handleShowMenu = () => {
     dispatch(showMenuChangeAction(!showMenu));

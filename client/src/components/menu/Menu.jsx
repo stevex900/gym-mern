@@ -4,7 +4,7 @@ import {
   ButtonContainer,
   NavLinkContainer as NavLink,
 } from "./menu.styles";
-import { Button } from "../button/Button.styles";
+
 import { useDispatch, useSelector } from "react-redux";
 import { showMenuChangeAction } from "../../redux/actions/navigationActions";
 

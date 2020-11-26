@@ -9,16 +9,13 @@ import {
 import {
   MainContainer,
   PrimaryContainer,
-  SecondaryContainer,
   TertiaryContainer,
-  QuinaryContainer,
   ExerciseDataMyRep,
   ExerciseDataMyWeight,
   Button,
   SmallButton,
   ButtonContainer,
   ExerciseName,
-  P,
   Input,
   ExerciseData,
   ExerciseDataItemContainer,
@@ -39,7 +36,6 @@ const ViewTraining = () => {
   const dispatch = useDispatch();
   const [myScoreInputRepetitions, setMyScoreInputRepetitions] = useState("");
   const [myScoreInputWeight, setMyScoreInputWeight] = useState("");
-  const [myScoreInputSeries, setMyScoreInputSeries] = useState("");
 
   const handleInputChange = (bindValue, e) => {
     if (bindValue === "repetitions") {
