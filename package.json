@@ -17,7 +17,7 @@
     "server": "nodemon server.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "concurrently \"node server.js\" \"npm run start --prefix client\""
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
