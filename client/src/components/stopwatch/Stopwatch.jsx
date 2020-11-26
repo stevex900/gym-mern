@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { ReactComponent as StopwatchIcon } from "../../assets/stopwatch.svg";
+// import { ReactComponent as StopwatchIcon } from "../../assets/stopwatch.svg";
 import { Container, Container2 } from "./stopwatch.styles";
 
 import StopwatchWindow from "../stopwatch-window/StopwatchWindow";
@@ -19,10 +19,10 @@ const Stopwatch = () => {
   return (
     <Container2>
       <Container>
-        <StopwatchIcon onClick={handleShowStopwatch} />
-        {/* <div onClick={handleShowStopwatch} style={{ color: "white " }}>
+        {/* <StopwatchIcon onClick={handleShowStopwatch} /> */}
+        <div onClick={handleShowStopwatch} style={{ color: "white " }}>
           STOPER
-        </div> */}
+        </div>
       </Container>
       {stopwatchActive && <StopwatchWindow />}
     </Container2>

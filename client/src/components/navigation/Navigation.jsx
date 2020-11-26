@@ -1,5 +1,5 @@
 import { Nav } from "./navigation.styles";
-import { ReactComponent as Hamburger } from "../../assets/hamburgerS.svg";
+// import { ReactComponent as Hamburger } from "../../assets/hamburgerS.svg";
 import Menu from "../menu/Menu";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,12 +18,12 @@ const Navigation = () => {
   };
   return (
     <Nav>
-      {userInfo && <Hamburger onClick={handleShowMenu} />}
-      {/* {
+      {/* {userInfo && <Hamburger onClick={handleShowMenu} />} */}
+      {
         <div onClick={handleShowMenu} style={{ color: "white " }}>
           HAMBURGER
         </div>
-      } */}
+      }
 
       {showMenu && <Menu />}
     </Nav>
