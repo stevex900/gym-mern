@@ -6,16 +6,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"cd frontend && npm run build",
-    "install-client": "npm install --prefix frontend",
-    "heroku-postbuild": "npm run install-client && npm run build",
+    "build": "cd client && npm run build",
+    "install-client": "npm install --prefix client",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "server":  "nodemon --watch backend --exec node --experimental-modules backend/server.js",
-    "client": "npm run start --prefix frontend",
+    "server": "nodemon --watch gym --exec node --experimental-modules server.js",
+    "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start":"concurrently \"npm run server\" \"npm run client\""
-    
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -41,6 +40,7 @@
     "mongodb": "^3.6.3",
     "mongoose": "^5.10.14",
     "nodemon": "^2.0.6",
+    "path": "^0.12.7",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5"
   }

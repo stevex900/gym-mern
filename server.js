@@ -2,10 +2,18 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routers/userRouter.js";
+import path from "path";
+// require("dotenv").config();
 
 dotenv.config();
 
+const uri = process.env.ATLAS_URI;
+
 const app = express();
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client", "build")));
+}
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -28,6 +36,10 @@ app.use("/", userRouter);
 
 app.get("/", (req, res) => {
   res.send("Server is ready");
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 const port = process.env.PORT || 5000;

@@ -14,3 +14,5 @@ export const generateToken = (user) => {
     }
   );
 };
+
+// "start": "concurrently \"npm run server\" \"npm run client\""
