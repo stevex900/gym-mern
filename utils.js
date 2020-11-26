@@ -20,3 +20,5 @@ const generateToken = (user) => {
 module.exports = generateToken;
 
 // "start": "concurrently \"npm run server\" \"npm run client\""
+// "start": "node server.js"
+//
