@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/gym/static/css/main.457a00d2.chunk.css",
+    "main.js": "/gym/static/js/main.15615c7e.chunk.js",
+    "main.js.map": "/gym/static/js/main.15615c7e.chunk.js.map",
+    "runtime-main.js": "/gym/static/js/runtime-main.fdf1fd59.js",
+    "runtime-main.js.map": "/gym/static/js/runtime-main.fdf1fd59.js.map",
+    "static/js/2.f4244055.chunk.js": "/gym/static/js/2.f4244055.chunk.js",
+    "static/js/2.f4244055.chunk.js.map": "/gym/static/js/2.f4244055.chunk.js.map",
+    "index.html": "/gym/index.html",
+    "precache-manifest.98dbef470c64404b143b35d3ce67a3f7.js": "/gym/precache-manifest.98dbef470c64404b143b35d3ce67a3f7.js",
+    "service-worker.js": "/gym/service-worker.js",
+    "static/css/main.457a00d2.chunk.css.map": "/gym/static/css/main.457a00d2.chunk.css.map",
+    "static/js/2.f4244055.chunk.js.LICENSE.txt": "/gym/static/js/2.f4244055.chunk.js.LICENSE.txt",
+    "static/media/hamburgerS.7a25fd0a.svg": "/gym/static/media/hamburgerS.7a25fd0a.svg",
+    "static/media/stopwatch.8f6a9461.svg": "/gym/static/media/stopwatch.8f6a9461.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fdf1fd59.js",
+    "static/js/2.f4244055.chunk.js",
+    "static/css/main.457a00d2.chunk.css",
+    "static/js/main.15615c7e.chunk.js"
+  ]
+}
