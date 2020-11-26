@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("frontend/build"));
+  app.use(express.static("client/build"));
 }
 
 mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/gym", {
