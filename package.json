@@ -1,6 +1,6 @@
 {
   "name": "gym",
-  "type": "module",
+  
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "server": "nodemon --watch gym --exec node --experimental-modules server.js",
+    "server": "nodemon server.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "node server.js"

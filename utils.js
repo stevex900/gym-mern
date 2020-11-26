@@ -1,6 +1,8 @@
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
-export const generateToken = (user) => {
+// export
+const generateToken = (user) => {
   return jwt.sign(
     {
       _id: user._id,
@@ -14,5 +16,7 @@ export const generateToken = (user) => {
     }
   );
 };
+
+module.exports = generateToken;
 
 // "start": "concurrently \"npm run server\" \"npm run client\""

@@ -1,9 +1,16 @@
-import express from "express";
-import expressAsyncHandler from "express-async-handler";
-import bcrypt from "bcryptjs";
-import data from "../data.js";
-import User from "../models/userModel.js";
-import { generateToken } from "../utils.js";
+const express = require("express");
+const expressAsyncHandler = require("express-async-handler");
+const bcrypt = require("bcryptjs");
+const data = require("../data.js");
+const User = require("../models/userModel.js");
+const generateToken = require("../utils.js");
+
+// import express from "express";
+// import expressAsyncHandler from "express-async-handler";
+// import bcrypt from "bcryptjs";
+// import data from "../data.js";
+// import User from "../models/userModel.js";
+// import { generateToken } from "../utils.js";
 
 const userRouter = express.Router();
 
@@ -15,15 +22,6 @@ userRouter.get(
     res.send({ createUsers });
   })
 );
-
-// userRouter.put(
-//   "/viewtraining/:id",
-//   expressAsyncHandler(async (req, res) => {
-//     const user = await User.findByIdAndUpdate(req.params.id, {
-//       historyTraining: { allTrainingsHistory: req.body.historyTraining },
-//     });
-//   })
-// );
 
 userRouter.put(
   "/viewtraining/:id",
@@ -175,4 +173,5 @@ userRouter.post(
     });
   })
 );
-export default userRouter;
+// export default userRouter;
+module.exports = userRouter;
