@@ -26,7 +26,7 @@ const App = () => {
           <Header />
         </PrimaryContainer>
         <SecondaryContainer>
-          <Route path="/:id" component={Start} exact={true} />
+          <Route path="/" component={Start} exact={true} />
           <Route path="/arrangetraining/:id" component={ArrangeTraining} />
           {/* <Route path="/viewtraining" component={ViewTraining} /> */}
           {userInfo && (

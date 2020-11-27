@@ -23,7 +23,7 @@ const Menu = () => {
       path: `/viewtraining/${userSignin.userInfo._id}`,
     },
     { id: 3, name: "History", path: `/history/${userSignin.userInfo._id}` },
-    { id: 4, name: "Start", path: `/${userSignin.userInfo._id}`, exact: true },
+    { id: 4, name: "Home Page", path: `/`, exact: true },
   ];
   const handleShowMenu = () => {
     dispatch(showMenuChangeAction(false));

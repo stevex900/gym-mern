@@ -1,11 +1,32 @@
 import React from "react";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import { signin } from "../../redux/actions/userActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { showMenuChangeAction } from "../../redux/actions/navigationActions";
+import { showStopwatchChangeAction } from "../../redux/actions/stopwatchActions";
+import { withRouter } from "react-router";
 
-const LogIn = () => {
+const LogIn = ({ history }) => {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+
+  const dispatch = useDispatch();
+  const menu = useSelector((state) => state.menu);
+  const { showMenu } = menu;
+
+  const handleShowMenu = () => {
+    dispatch(showMenuChangeAction(!showMenu));
+    dispatch(showStopwatchChangeAction(false));
+  };
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/");
+      handleShowMenu();
+    }
+  }, [userInfo]);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleChange = (bindValue, e) => {
@@ -17,7 +38,6 @@ const LogIn = () => {
   };
   // const userSignin = useSelector((state) => state.userSignin);
   // const { userInfo, loading, error } = userSignin;
-  const dispatch = useDispatch();
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -67,4 +87,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default withRouter(LogIn);

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 697.35 194.95" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <filter id="a" x="-.070664" y="-.39759" width="1.1413" height="1.7952" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="17.989844"/>
+  </filter>
+ </defs>
+ <g transform="translate(-51.106 -9.1726)">
+  <g>
+   <path d="m159.75 52.348v108.59h23.406v-108.59h-23.406zm456.62 0v108.59h23.438v-108.59h-23.438zm-478.72 12.781v83.031h17.031v-83.031h-17.031zm50.562 0v83.031h17.031v-83.031h-17.031zm406.09 0v83.031h17.031v-83.031h-17.031zm50.562 0v83.031h17.031v-83.031h-17.031zm-550.59 31.938v19.156h38.312v-19.156h-38.312zm116.03 0v19.156h378.94v-19.156h-378.94zm456.62 0v19.156h38.344v-19.156h-38.344z" filter="url(#a)" opacity=".7"/>
+   <g transform="matrix(.7451 0 0 .7451 132.61 -139.93)">
+    <rect x="104.29" y="318.08" width="508.57" height="25.714"/>
+    <rect x="36.429" y="258.08" width="31.429" height="145.71"/>
+    <rect x="74.643" y="275.22" width="22.857" height="111.43"/>
+    <rect x="6.7857" y="275.22" width="22.857" height="111.43"/>
+    <rect x="-51.429" y="318.08" width="51.429" height="25.714"/>
+    <rect x="649.29" y="258.08" width="31.429" height="145.71"/>
+    <rect x="687.5" y="275.22" width="22.857" height="111.43"/>
+    <rect x="619.64" y="275.22" width="22.857" height="111.43"/>
+    <rect x="717.14" y="318.08" width="51.429" height="25.714"/>
+   </g>
+  </g>
+ </g>
+</svg>

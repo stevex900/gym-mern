@@ -10,7 +10,17 @@ import Navigation from "../navigation/Navigation";
 import { useDispatch, useSelector } from "react-redux";
 import Stopwatch from "../stopwatch/Stopwatch";
 import { signout } from "../../redux/actions/userActions";
+import { showMenuChangeAction } from "../../redux/actions/navigationActions";
+import { showStopwatchChangeAction } from "../../redux/actions/stopwatchActions";
 const Header = ({ currentUser }) => {
+  const menu = useSelector((state) => state.menu);
+  const { showMenu } = menu;
+
+  const handleShowMenu = () => {
+    dispatch(showMenuChangeAction(false));
+    dispatch(showStopwatchChangeAction(false));
+  };
+
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const dispatch = useDispatch();
@@ -21,7 +31,13 @@ const Header = ({ currentUser }) => {
     <Container>
       <Container>
         {userInfo ? (
-          <NavLink onClick={signoutHandler} to="/login">
+          <NavLink
+            onClick={() => {
+              signoutHandler();
+              handleShowMenu();
+            }}
+            to="/"
+          >
             <LogInContainer>
               <Span>Log out {userInfo.name}</Span>
             </LogInContainer>

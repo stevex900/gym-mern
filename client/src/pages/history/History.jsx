@@ -69,12 +69,7 @@ const History = () => {
     </HistoryContainer>
   ));
 
-  return (
-    <MainContainer>
-      {historyWorkout}
-      <button onClick={() => console.log(historyList)}>TEST</button>
-    </MainContainer>
-  );
+  return <MainContainer>{historyWorkout}</MainContainer>;
 };
 
 export default History;
