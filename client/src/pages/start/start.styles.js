@@ -9,8 +9,4 @@ export const Container = styled.div`
   justify-content: center;
   margin-top: 40px;
 `;
-export const MainContainer = styled.div`
-  /* max-width: 40px; */
-  /* max-height: 40px; */
-  /* background-color: red; */
-`;
+export const MainContainer = styled.div``;

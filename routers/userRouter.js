@@ -128,12 +128,12 @@ userRouter.post(
       name: req.body.name,
       email: req.body.email,
       viewTraining: {
-        number: 8,
+        number: null,
         viewCurrentWorkout: [
           {
             id: null,
             exerciseName: "",
-            exercise: [{ series: null, repetitions: "", weight: "" }],
+            exercise: [{ series: 1, repetitions: "", weight: "" }],
           },
         ],
       },
@@ -145,7 +145,7 @@ userRouter.post(
             date: "",
             history: [
               {
-                id: 9,
+                id: null,
                 exerviseName: "",
                 exercise: [
                   {
@@ -169,6 +169,8 @@ userRouter.post(
       name: createdUser.name,
       email: createdUser.email,
       isAdmin: createdUser.isAdmin,
+      viewTraining: createdUser.viewTraining,
+      historyTraining: createdUser.historyTraining,
       token: generateToken(createdUser),
     });
   })

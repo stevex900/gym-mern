@@ -32,7 +32,7 @@ const App = () => {
           {userInfo && (
             <Route path="/viewtraining/:id" component={ViewTraining} />
           )}
-          <Route path="/history/:id" component={History} />
+          {userInfo && <Route path="/history/:id" component={History} />}
           <Route path="/login" component={LogIn} />
           <Route path="/register" component={Register} />
         </SecondaryContainer>
