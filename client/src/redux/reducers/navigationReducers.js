@@ -1,7 +1,7 @@
 import { ActionTypes } from "../constants/navigationConstants";
 const INITIAL_STATE = {
   showMenu: false,
-  showExercisesLibrary: true,
+  showExercisesLibrary: false,
   showAddExerciseToLibrary: false,
 };
 
