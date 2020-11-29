@@ -100,6 +100,19 @@ userRouter.put(
   })
 );
 
+userRouter.put(
+  "/arrangetraining/:id",
+  expressAsyncHandler(async (req, res) => {
+    const data = await User.findById(req.params.id);
+    const user = await User.findByIdAndUpdate(req.params.id, {
+      exercisesName: [...data.exerciseName, ...req.body.exerciseName],
+    });
+    if (user) {
+      res.send({ exercisesName: user.exercisesName });
+    }
+  })
+);
+
 userRouter.post(
   "/login",
   expressAsyncHandler(async (req, res) => {
@@ -113,6 +126,7 @@ userRouter.post(
           isAdmin: user.isAdmin,
           viewTraining: user.viewTraining,
           historyTraining: user.historyTraining,
+          exercisesName: user.exercisesName,
           token: generateToken(user),
         });
         return;
@@ -161,6 +175,16 @@ userRouter.post(
           },
         ],
       },
+      exercisesName: {
+        chest: [""],
+        back: [""],
+        legs: [""],
+        shoulders: [""],
+        biceps: [""],
+        triceps: [""],
+        abdomen: [""],
+        other: [""],
+      },
       password: bcrypt.hashSync(req.body.password, 8),
     });
     const createdUser = await user.save();
@@ -171,6 +195,7 @@ userRouter.post(
       isAdmin: createdUser.isAdmin,
       viewTraining: createdUser.viewTraining,
       historyTraining: createdUser.historyTraining,
+      exercisesName: createdUser.exercisesName,
       token: generateToken(createdUser),
     });
   })

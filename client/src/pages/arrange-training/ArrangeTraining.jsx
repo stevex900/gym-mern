@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ExerciseLibrary from "../../components/exercise-library/ExerciseLibrary";
 import { useDispatch, useSelector } from "react-redux";
 import {
   numberChange,
@@ -195,6 +196,7 @@ const ArrangeTraining = () => {
   return (
     <MainContainer>
       {currentWorkoutsList}
+      <ExerciseLibrary />
       <Container>
         <Top>
           <PrimaryContainer>
