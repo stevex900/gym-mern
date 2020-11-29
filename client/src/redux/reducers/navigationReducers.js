@@ -2,7 +2,7 @@ import { ActionTypes } from "../constants/navigationConstants";
 const INITIAL_STATE = {
   showMenu: false,
   showExercisesLibrary: true,
-  showAddExerciseToLibrary: true,
+  showAddExerciseToLibrary: false,
 };
 
 export const menuReducer = (state = INITIAL_STATE, action) => {

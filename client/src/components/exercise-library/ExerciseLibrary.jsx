@@ -31,8 +31,8 @@ const ExerciseLibrary = () => {
         </Button>
       </ButtonContainer>
       <Container>
-        {showAddExerciseToLibrary && <AddExerciseToLibrary />}
         {showExercisesLibrary && <CheckExerciseLibrary />}
+        {showAddExerciseToLibrary && <AddExerciseToLibrary />}
       </Container>
     </MainContainer>
   );

@@ -33,7 +33,7 @@ export const ButtonContainer = styled.div`
   left: 50%;
   transform: translateX(-50%); */
   /* bottom: 50px; */
-  background-color: gray;
+  /* background-color: gray; */
   justify-content: center;
   display: flex;
 `;
