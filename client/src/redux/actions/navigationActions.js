@@ -18,3 +18,10 @@ export const showAddExerciseToLibraryChangeAction = (item) => async (
     payload: item,
   });
 };
+
+export const showBodyPartsAction = (item, part) => async (dispatch) => {
+  dispatch({
+    type: ActionTypes.SHOW_OR_HIDE_BODY_PART,
+    payload: [item, part],
+  });
+};

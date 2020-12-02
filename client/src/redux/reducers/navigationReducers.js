@@ -3,6 +3,14 @@ const INITIAL_STATE = {
   showMenu: false,
   showExercisesLibrary: true,
   showAddExerciseToLibrary: false,
+  showChest: false,
+  showBack: false,
+  showLegs: false,
+  showShoulders: false,
+  showBiceps: false,
+  showTriceps: false,
+  showAbdomen: false,
+  showOther: false,
 };
 
 export const menuReducer = (state = INITIAL_STATE, action) => {
@@ -10,9 +18,52 @@ export const menuReducer = (state = INITIAL_STATE, action) => {
     case ActionTypes.SHOW_OR_HIDE_MENU:
       return { ...state, showMenu: action.payload };
     case ActionTypes.SHOW_OR_HIDE_EXERCISES_LIBRARY:
-      return { ...state, showExercisesLibrary: action.payload };
+      return {
+        ...state,
+        showExercisesLibrary: action.payload,
+        showAddExerciseToLibrary: false,
+        showChest: false,
+        showBack: false,
+        showLegs: false,
+        showShoulders: false,
+        showBiceps: false,
+        showTriceps: false,
+        showAbdomen: false,
+        showOther: false,
+      };
     case ActionTypes.SHOW_OR_HIDE_ADD_EXERCISE_TO_LIBRARY:
-      return { ...state, showAddExerciseToLibrary: action.payload };
+      return {
+        ...state,
+        showAddExerciseToLibrary: action.payload,
+        showExercisesLibrary: false,
+        showChest: false,
+        showBack: false,
+        showLegs: false,
+        showShoulders: false,
+        showBiceps: false,
+        showTriceps: false,
+        showAbdomen: false,
+        showOther: false,
+      };
+    case ActionTypes.SHOW_OR_HIDE_BODY_PART:
+      if (action.payload[1] === "chest") {
+        return { ...state, showChest: action.payload[0] };
+      } else if (action.payload[1] === "back") {
+        return { ...state, showBack: action.payload[0] };
+      } else if (action.payload[1] === "legs") {
+        return { ...state, showLegs: action.payload[0] };
+      } else if (action.payload[1] === "shoulders") {
+        return { ...state, showShoulders: action.payload[0] };
+      } else if (action.payload[1] === "biceps") {
+        return { ...state, showBiceps: action.payload[0] };
+      } else if (action.payload[1] === "triceps") {
+        return { ...state, showTriceps: action.payload[0] };
+      } else if (action.payload[1] === "abdomen") {
+        return { ...state, showAbdomen: action.payload[0] };
+      } else if (action.payload[1] === "other") {
+        return { ...state, showOther: action.payload[0] };
+      }
+
     default:
       return state;
   }
