@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const DetailsContainer = styled.div`
+  background-color: white;
+  border: 1px solid #474545;
+  color: black;
+`;
 export const PrimaryContainer = styled.div`
   display: flex;
   flex-direction: column;
