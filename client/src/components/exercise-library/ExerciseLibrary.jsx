@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MainContainer } from "./exerciseLibrary.styles";
 import { Button, ButtonContainer, Container } from "./exerciseLibrary.styles";
-import AddExerciseToLibrary from "./add-exercise-to-library/AddExerciseToLibrary";
-import CheckExerciseLibrary from "./check-exercise-library/CheckExerciseLibrary";
+
+import PartList from "./part-list/PartList";
 import {
   showAddExerciseToLibraryChangeAction,
   showExercisesLibraryChangeAction,
@@ -31,8 +31,11 @@ const ExerciseLibrary = () => {
         </Button>
       </ButtonContainer>
       <Container>
-        {showExercisesLibrary && <CheckExerciseLibrary />}
-        {showAddExerciseToLibrary && <AddExerciseToLibrary />}
+        {showExercisesLibrary && <PartList info="Exercises Library" library />}
+
+        {showAddExerciseToLibrary && (
+          <PartList info="Add Exercise to Library" add />
+        )}
       </Container>
     </MainContainer>
   );

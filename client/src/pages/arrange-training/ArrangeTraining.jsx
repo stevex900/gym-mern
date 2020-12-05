@@ -6,7 +6,7 @@ import {
   setExerciseAction,
   setTrainingAction,
 } from "../../redux/actions/arrangeTrainingActions";
-
+import { exerciseInputChange } from "../../redux/actions/navigationActions";
 import {
   MainContainer,
   PrimaryContainer,
@@ -24,7 +24,9 @@ import {
   ButtonContainer,
 } from "./arrangeTraining.styles";
 const ArrangeTraining = () => {
-  const [inputExerciseName, setInputExerciseName] = useState("");
+  const menu = useSelector((state) => state.menu);
+  const { inputExerciseName } = menu;
+  // const [inputExerciseName, setInputExerciseName] = useState("");
   const [inputSeries, setInputSeries] = useState("");
   const [inputRepetitions1, setInputRepetitions1] = useState("");
   const [inputWeight1, setInputWeight1] = useState("");
@@ -44,7 +46,7 @@ const ArrangeTraining = () => {
 
   const handleInputChange = (bindValue, e) => {
     if (bindValue === "exercise-name") {
-      setInputExerciseName(e.target.value);
+      dispatch(exerciseInputChange(e.target.value));
     } else if (bindValue === "series") {
       setInputSeries(e.target.value);
     } else if (bindValue === "repetitions1") {
@@ -142,7 +144,7 @@ const ArrangeTraining = () => {
       ],
     };
     dispatch(numberChange(number + 1));
-    setInputExerciseName("");
+    dispatch(exerciseInputChange(""));
     setInputSeries("");
     setInputRepetitions1("");
     setInputWeight1("");

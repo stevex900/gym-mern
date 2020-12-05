@@ -1,7 +1,7 @@
 import { ActionTypes } from "../constants/navigationConstants";
 const INITIAL_STATE = {
   showMenu: false,
-  showExercisesLibrary: true,
+  showExercisesLibrary: false,
   showAddExerciseToLibrary: false,
   showChest: false,
   showBack: false,
@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   showTriceps: false,
   showAbdomen: false,
   showOther: false,
+  inputExerciseName: "",
 };
 
 export const menuReducer = (state = INITIAL_STATE, action) => {
@@ -63,7 +64,10 @@ export const menuReducer = (state = INITIAL_STATE, action) => {
       } else if (action.payload[1] === "other") {
         return { ...state, showOther: action.payload[0] };
       }
-
+    case ActionTypes.EXERCISE_INPUT_CHANGE:
+      return { ...state, inputExerciseName: action.payload };
+    case ActionTypes.ADD_TO_EXERCISE_INPUT:
+      return { ...state, inputExerciseName: action.payload };
     default:
       return state;
   }
