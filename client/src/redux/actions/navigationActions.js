@@ -25,3 +25,9 @@ export const showBodyPartsAction = (item, part) => async (dispatch) => {
     payload: [item, part],
   });
 };
+export const addToExerciseInput = (item) => async (dispatch) => {
+  dispatch({ type: ActionTypes.ADD_TO_EXERCISE_INPUT, payload: item });
+};
+export const exerciseInputChange = (item) => async (dispatch) => {
+  dispatch({ type: ActionTypes.EXERCISE_INPUT_CHANGE, payload: item });
+};
