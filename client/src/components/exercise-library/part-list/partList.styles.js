@@ -21,6 +21,6 @@ export const BodyPartContainer = styled.div`
   background-color: #474545;
   color: white;
   margin-top: 5px;
-  width: 50%;
+  width: 90%;
   text-align: center;
 `;
