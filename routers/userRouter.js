@@ -35,16 +35,6 @@ userRouter.put(
         res.send({
           viewTraining: user.viewTraining,
         });
-        console.log(
-          "userem jest :",
-          user,
-          "na pewno dziala?",
-          "REQ  ",
-          req.body,
-          "    USER ",
-          user.viewTraining,
-          "dziala!"
-        );
       }
     } else if (req.body.historyTraining) {
       const data = await User.findById(req.params.id);
@@ -56,21 +46,11 @@ userRouter.put(
           ],
         },
       });
-      console.log("@@@DATA@@@", data.historyTraining.allTrainingsHistory[0]);
+
       if (user) {
         res.send({
           historyTraining: user.historyTraining,
         });
-        console.log(
-          "userem jest :",
-          user,
-          "na pewno dziala?",
-          "REQ  ",
-          req.body,
-          "    USER ",
-          user.historyTraining,
-          "dziala!"
-        );
       }
     }
   })
@@ -79,39 +59,154 @@ userRouter.put(
 userRouter.put(
   "/arrangetraining/:id",
   expressAsyncHandler(async (req, res) => {
-    const user = await User.findByIdAndUpdate(req.params.id, {
-      viewTraining: { viewCurrentWorkout: req.body.viewTraining },
-    });
-    if (user) {
-      res.send({
-        viewTraining: user.viewTraining,
+    if (req.body.viewTraining) {
+      const user = await User.findByIdAndUpdate(req.params.id, {
+        viewTraining: { viewCurrentWorkout: req.body.viewTraining },
       });
-      console.log(
-        "userem jest :",
-        user,
-        "na pewno dziala?",
-        "REQ  ",
-        req.body,
-        "    USER ",
-        user.viewTraining,
-        "dziala!"
-      );
+      if (user) {
+        res.send({
+          viewTraining: user.viewTraining,
+        });
+      }
+    }
+    if (req.body.exercisesName) {
+      if (req.body.exercisesName && req.body.name === "chest") {
+        const data = await User.findById(req.params.id);
+        const user = await User.findByIdAndUpdate(req.params.id, {
+          exercisesName: {
+            chest: [...data.exercisesName.chest, req.body.exercisesName],
+            back: data.exercisesName.back,
+            legs: data.exercisesName.legs,
+            shoulders: data.exercisesName.shoulders,
+            biceps: data.exercisesName.biceps,
+            triceps: data.exercisesName.triceps,
+            abdomen: data.exercisesName.abdomen,
+            other: data.exercisesName.other,
+          },
+        });
+        const updatedUser = await User.findById(req.params.id);
+        console.log("co odsyla mi backend:     ", updatedUser.exercisesName);
+      } else if (req.body.exercisesName && req.body.name === "back") {
+        const data = await User.findById(req.params.id);
+        const user = await User.findByIdAndUpdate(req.params.id, {
+          exercisesName: {
+            chest: data.exercisesName.chest,
+            back: [...data.exercisesName.back, req.body.exercisesName],
+            legs: data.exercisesName.legs,
+            shoulders: data.exercisesName.shoulders,
+            biceps: data.exercisesName.biceps,
+            triceps: data.exercisesName.triceps,
+            abdomen: data.exercisesName.abdomen,
+            other: data.exercisesName.other,
+          },
+        });
+      } else if (req.body.exercisesName && req.body.name === "legs") {
+        const data = await User.findById(req.params.id);
+        const user = await User.findByIdAndUpdate(req.params.id, {
+          exercisesName: {
+            chest: data.exercisesName.chest,
+            back: data.exercisesName.back,
+            legs: [...data.exercisesName.legs, req.body.exercisesName],
+            shoulders: data.exercisesName.shoulders,
+            biceps: data.exercisesName.biceps,
+            triceps: data.exercisesName.triceps,
+            abdomen: data.exercisesName.abdomen,
+            other: data.exercisesName.other,
+          },
+        });
+      } else if (req.body.exercisesName && req.body.name === "shoulders") {
+        const data = await User.findById(req.params.id);
+        const user = await User.findByIdAndUpdate(req.params.id, {
+          exercisesName: {
+            chest: data.exercisesName.chest,
+            back: data.exercisesName.back,
+            legs: data.exercisesName.legs,
+            shoulders: [
+              ...data.exercisesName.shoulders,
+              req.body.exercisesName,
+            ],
+            biceps: data.exercisesName.biceps,
+            triceps: data.exercisesName.triceps,
+            abdomen: data.exercisesName.abdomen,
+            other: data.exercisesName.other,
+          },
+        });
+      } else if (req.body.exercisesName && req.body.name === "biceps") {
+        const data = await User.findById(req.params.id);
+        const user = await User.findByIdAndUpdate(req.params.id, {
+          exercisesName: {
+            chest: data.exercisesName.chest,
+            back: data.exercisesName.back,
+            legs: data.exercisesName.legs,
+            shoulders: data.exercisesName.shoulders,
+            biceps: [...data.exercisesName.biceps, req.body.exercisesName],
+            triceps: data.exercisesName.triceps,
+            abdomen: data.exercisesName.abdomen,
+            other: data.exercisesName.other,
+          },
+        });
+      } else if (req.body.exercisesName && req.body.name === "triceps") {
+        const data = await User.findById(req.params.id);
+        const user = await User.findByIdAndUpdate(req.params.id, {
+          exercisesName: {
+            chest: data.exercisesName.chest,
+            back: data.exercisesName.back,
+            legs: data.exercisesName.legs,
+            shoulders: data.exercisesName.shoulders,
+            biceps: data.exercisesName.biceps,
+            triceps: [...data.exercisesName.triceps, req.body.exercisesName],
+            abdomen: data.exercisesName.abdomen,
+            other: data.exercisesName.other,
+          },
+        });
+      } else if (req.body.exercisesName && req.body.name === "abdomen") {
+        const data = await User.findById(req.params.id);
+        const user = await User.findByIdAndUpdate(req.params.id, {
+          exercisesName: {
+            chest: data.exercisesName.chest,
+            back: data.exercisesName.back,
+            legs: data.exercisesName.legs,
+            shoulders: data.exercisesName.shoulders,
+            biceps: data.exercisesName.biceps,
+            triceps: data.exercisesName.triceps,
+            abdomen: [...data.exercisesName.abdomen, req.body.exercisesName],
+            other: data.exercisesName.other,
+          },
+        });
+      } else if (req.body.exercisesName && req.body.name === "other") {
+        const data = await User.findById(req.params.id);
+        const user = await User.findByIdAndUpdate(req.params.id, {
+          exercisesName: {
+            chest: data.exercisesName.chest,
+            back: data.exercisesName.back,
+            legs: data.exercisesName.legs,
+            shoulders: data.exercisesName.shoulders,
+            biceps: data.exercisesName.biceps,
+            triceps: data.exercisesName.triceps,
+            abdomen: data.exercisesName.abdomen,
+            other: [...data.exercisesName.other, req.body.exercisesName],
+          },
+        });
+      }
+      const updatedData = await User.findById(req.params.id);
+      console.log("na samym koncu odsylam     ", updatedData.exercisesName);
+      res.send(updatedData.exercisesName);
     }
   })
 );
 
-userRouter.put(
-  "/arrangetraining/:id",
-  expressAsyncHandler(async (req, res) => {
-    const data = await User.findById(req.params.id);
-    const user = await User.findByIdAndUpdate(req.params.id, {
-      exercisesName: [...data.exerciseName, ...req.body.exerciseName],
-    });
-    if (user) {
-      res.send({ exercisesName: user.exercisesName });
-    }
-  })
-);
+// userRouter.put(
+//   "/arrangetraining/:id",
+//   expressAsyncHandler(async (req, res) => {
+//     const data = await User.findById(req.params.id);
+//     const user = await User.findByIdAndUpdate(req.params.id, {
+//       exercisesName: [...data.exerciseName, ...req.body.exerciseName],
+//     });
+//     if (user) {
+//       res.send({ exercisesName: user.exercisesName });
+//     }
+//   })
+// );
 
 userRouter.post(
   "/login",

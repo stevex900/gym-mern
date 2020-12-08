@@ -181,7 +181,6 @@ const ArrangeTraining = () => {
               item.repetitions && item.repetitions + "x"
             }`}</ExerciseDataItem>
             <ExerciseDataItem>
-              {" "}
               {`${item.weight && item.weight + "kg"}`}
             </ExerciseDataItem>
           </ExerciseDataItemContainer>
