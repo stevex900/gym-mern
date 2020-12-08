@@ -129,7 +129,7 @@ const PartList = ({ info, library, add }) => {
             )}
             {active && add && (
               <DetailsContainer>
-                <AddExerciseToLibrary />
+                <AddExerciseToLibrary name={name} />
               </DetailsContainer>
             )}
           </BodyPartContainer>

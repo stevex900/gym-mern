@@ -2,8 +2,8 @@ import { ActionTypes } from "../constants/navigationConstants";
 const INITIAL_STATE = {
   showMenu: false,
   showExercisesLibrary: false,
-  showAddExerciseToLibrary: false,
-  showChest: false,
+  showAddExerciseToLibrary: true,
+  showChest: true,
   showBack: false,
   showLegs: false,
   showShoulders: false,
@@ -68,6 +68,7 @@ export const menuReducer = (state = INITIAL_STATE, action) => {
       return { ...state, inputExerciseName: action.payload };
     case ActionTypes.ADD_TO_EXERCISE_INPUT:
       return { ...state, inputExerciseName: action.payload };
+
     default:
       return state;
   }

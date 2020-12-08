@@ -24,6 +24,23 @@ export const setTrainingAction = (item, id) => async (dispatch) => {
     console.log("Nie działa");
   }
 };
+export const addExerciseToLibraryAction = (item, id, name) => async (
+  dispatch
+) => {
+  try {
+    const { data } = await Axios.put(`/arrangetraining/${id}`, {
+      exercisesName: item,
+      name: name,
+      id: id,
+    });
+    dispatch({ type: ActionTypes.ADD_EXERCISE_TO_LIBRARY, payload: item });
+    console.log("Sprawdzanie axios", data);
+  } catch (e) {
+    console.log("Nie działa");
+  }
+  // type: ActionTypes.ADD_EXERCISE_TO_LIBRARY,
+  //     payload: item,
+};
 export const numberChange = (item) => ({
   type: ActionTypes.NUMBER_CHANGE,
   payload: item,

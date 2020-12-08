@@ -40,6 +40,8 @@ export const arrangeTrainingReducer = (state = INITIAL_STATE, action) => {
         ...state,
         number: action.payload,
       };
+    case ActionTypes.ADD_EXERCISE_TO_LIBRARY:
+      return { ...state };
     default:
       return state;
   }
