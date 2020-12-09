@@ -33,6 +33,14 @@ export const userSigninReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case USER_SIGNOUT:
       return {};
+    case ActionTypes.ADD_EXERCISE_TO_LIBRARY:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          exercisesName: action.payload,
+        },
+      };
     case ActionTypes.SET_TRAINING_ACTION:
       return {
         ...state,

@@ -2,8 +2,8 @@ import { ActionTypes } from "../constants/navigationConstants";
 const INITIAL_STATE = {
   showMenu: false,
   showExercisesLibrary: false,
-  showAddExerciseToLibrary: true,
-  showChest: true,
+  showAddExerciseToLibrary: false,
+  showChest: false,
   showBack: false,
   showLegs: false,
   showShoulders: false,

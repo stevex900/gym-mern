@@ -33,7 +33,7 @@ export const addExerciseToLibraryAction = (item, id, name) => async (
       name: name,
       id: id,
     });
-    dispatch({ type: ActionTypes.ADD_EXERCISE_TO_LIBRARY, payload: item });
+    dispatch({ type: ActionTypes.ADD_EXERCISE_TO_LIBRARY, payload: data });
     console.log("Sprawdzanie axios", data);
   } catch (e) {
     console.log("Nie działa");
