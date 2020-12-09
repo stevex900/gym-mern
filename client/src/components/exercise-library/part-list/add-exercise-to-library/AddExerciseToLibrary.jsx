@@ -17,11 +17,13 @@ const AddExerciseToLibrary = ({ name }) => {
         nameForBackend
       )
     );
-    console.log(inputChange, userSignin.userInfo._id, nameForBackend);
+    setInputChange("");
+    alert("New exercise has been added to library");
   };
   return (
     <Container>
       <Input
+        value={inputChange}
         onChange={handleChange}
         type="text"
         placeholder="Add Exercise Name to Library"
