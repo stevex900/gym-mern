@@ -6,6 +6,15 @@ import { Link } from "react-router-dom";
 import { showMenuChangeAction } from "../../redux/actions/navigationActions";
 import { showStopwatchChangeAction } from "../../redux/actions/stopwatchActions";
 import { withRouter } from "react-router";
+import {
+  Form,
+  MainContainer,
+  ButtonContainer,
+  Container,
+  Input,
+  Label,
+  Button,
+} from "./logIn.styles";
 
 const LogIn = ({ history }) => {
   const userSignin = useSelector((state) => state.userSignin);
@@ -45,45 +54,49 @@ const LogIn = ({ history }) => {
   };
 
   return (
-    <div>
-      <form className="form" onSubmit={handleLogIn}>
-        <div>
+    <MainContainer>
+      <Form className="form" onSubmit={handleLogIn}>
+        <Container>
           <h1>Sign In</h1>
-        </div>
+        </Container>
 
-        <div>
-          <label htmlFor="email">Email address</label>
-          <input
+        <Container>
+          <Label htmlFor="email">Email address</Label>
+          <Input
             type="email"
             id="email"
             placeholder="Enter email"
             required
             onChange={handleChange.bind(this, "email")}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
+          ></Input>
+        </Container>
+        <Container>
+          <Label htmlFor="password">Password</Label>
+          <Input
             type="password"
             id="password"
             placeholder="Enter password"
             required
             onChange={handleChange.bind(this, "password")}
-          ></input>
-        </div>
-        <div>
-          <label />
-          <button className="primary" type="submit">
-            Sign In
-          </button>
-        </div>
-        <div>
-          <label />
-        </div>
-      </form>
+          ></Input>
+        </Container>
+        <Container>
+          <Label />
+          <ButtonContainer>
+            <Button className="primary" type="submit">
+              Sign In
+            </Button>
+            <Button onClick={() => history.push("/register")}>Register</Button>
+          </ButtonContainer>
+        </Container>
+        <Container>
+          <Label />
+        </Container>
+      </Form>
       {/* //============================================================ */}
-      <Link to="/register">Register </Link>
-    </div>
+
+      {/* <Link to="/register">Register </Link> */}
+    </MainContainer>
   );
 };
 
