@@ -18,3 +18,11 @@ a {
 * {
   touch-action: manipulation;
 }
+@media screen and (max-width:767px){
+  input, select, textarea{
+    font-size:16px;
+  }
+}
+input{
+  transform: scale(0.75);
+}
