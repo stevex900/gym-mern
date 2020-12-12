@@ -2,7 +2,11 @@ import styled, { css } from "styled-components";
 
 export const ExerciseName = styled.div``;
 export const ExerciseData = styled.div``;
-export const MainContainer = styled.div``;
+export const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 export const ExerciseDataItemContainer = styled.div`
   display: flex;
 `;
@@ -43,14 +47,15 @@ export const SecondaryContainer = styled.div``;
 export const TertiaryContainer = styled.div`
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
   /* margin-bottom: 6px; */
   border-bottom: 1px solid lightgrey;
 `;
 export const QuinaryContainer = styled.div``;
 export const ButtonContainer = styled.div`
-  position: absolute;
+  /* position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
   /* bottom: 50px; */
   display: flex;
 `;
@@ -82,6 +87,7 @@ export const Button = styled.button`
   }
 `;
 export const P = styled.p``;
+export const InputContainer = styled.div``;
 export const Input = styled.input`
   /* position:fixed; */
   background-color: #e9e9e9;

@@ -6,7 +6,7 @@ export const ComparisonContainer = styled.div`
 export const HistoryContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border-bottom: 2px solid lightgrey;
+  border-bottom: 2px solid black;
 `;
 export const ExerciseData = styled.div`
   min-width: 130px;
