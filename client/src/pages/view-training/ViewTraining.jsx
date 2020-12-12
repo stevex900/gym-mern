@@ -20,6 +20,7 @@ import {
   ExerciseData,
   ExerciseDataItemContainer,
   ExerciseDataItem,
+  InputContainer,
 } from "./viewTraining.styles";
 
 const ViewTraining = () => {
@@ -182,18 +183,20 @@ const ViewTraining = () => {
     ));
   return (
     <MainContainer>
-      <Input
-        onChange={handleInputChange.bind(this, "repetitions")}
-        type="number"
-        placeholder="My Repetitions (X)"
-        value={myScoreInputRepetitions}
-      />
-      <Input
-        onChange={handleInputChange.bind(this, "weight")}
-        type="number"
-        placeholder="My Burden (KG)"
-        value={myScoreInputWeight}
-      />
+      <InputContainer>
+        <Input
+          onChange={handleInputChange.bind(this, "repetitions")}
+          type="number"
+          placeholder="My Repetitions (X)"
+          value={myScoreInputRepetitions}
+        />
+        <Input
+          onChange={handleInputChange.bind(this, "weight")}
+          type="number"
+          placeholder="My Burden (KG)"
+          value={myScoreInputWeight}
+        />
+      </InputContainer>
       <PrimaryContainer>{viewCurrentWorkoutsList}</PrimaryContainer>
       <ButtonContainer>
         <Button onClick={handleFinished}>Finished</Button>
