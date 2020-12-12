@@ -56,8 +56,12 @@ const StopwatchWindow = () => {
       if (restSeconds > 0) {
         dispatch(restChangeValueAction(--restSeconds));
       } else if (restSeconds === 0) {
+        if (restSeconds === 0 && restMinutes === 0) {
+          dispatch(seriesChangeValueAction(--seriesSeconds));
+        }
         dispatch(restChangeValueActionMinutes(--restMinutes));
         dispatch(restChangeValueAction((restSeconds = 59)));
+        // dispatch(seriesChangeValueAction(--seriesSeconds));
       }
     } else if (bindValue === "rest-add") {
       if (restSeconds < 59) {

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { register } from "../../redux/actions/userActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { withRouter } from "react-router";
 import {
   Form,
   MainContainer,
@@ -10,7 +11,26 @@ import {
   Label,
   Button,
 } from "./register.styles";
-const Register = () => {
+import { showMenuChangeAction } from "../../redux/actions/navigationActions";
+import { showStopwatchChangeAction } from "../../redux/actions/stopwatchActions";
+const Register = ({ history }) => {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+
+  const menu = useSelector((state) => state.menu);
+  const { showMenu } = menu;
+
+  const handleShowMenu = () => {
+    dispatch(showMenuChangeAction(!showMenu));
+    dispatch(showStopwatchChangeAction(false));
+  };
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/");
+      handleShowMenu();
+    }
+  }, [userInfo]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -92,4 +112,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default withRouter(Register);

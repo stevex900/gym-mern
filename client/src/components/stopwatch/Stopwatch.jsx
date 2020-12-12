@@ -20,9 +20,6 @@ const Stopwatch = () => {
     <Container2>
       <Container>
         <StopwatchIcon onClick={handleShowStopwatch} />
-        {/* <div onClick={handleShowStopwatch} style={{ color: "white " }}>
-          STOPER
-        </div> */}
       </Container>
       {stopwatchActive && <StopwatchWindow />}
     </Container2>
