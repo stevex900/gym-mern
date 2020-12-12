@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
+  touch-action: manipulation;
   display: flex;
   flex-direction: column;
 `;

@@ -64,6 +64,7 @@ export const ButtonContainer = styled.div`
   display: flex;
 `;
 export const Button = styled.button`
+  touch-action: manipulation;
   margin-left: 4px;
   margin-right: 4px;
   margin-top: 8px;
