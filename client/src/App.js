@@ -1,5 +1,5 @@
 import React from "react";
-
+import { popupData } from "./components/popup/popupData";
 import { Route } from "react-router-dom";
 import {
   PrimaryContainer,
@@ -15,6 +15,7 @@ import ViewTraining from "./pages/view-training/ViewTraining";
 import LogIn from "./pages/login/LogIn";
 import "./App.css";
 import Register from "./pages/register/Register";
+import Popup from "./components/popup/popup";
 
 const App = () => {
   const userSignin = useSelector((state) => state.userSignin);
@@ -22,9 +23,11 @@ const App = () => {
   return (
     <>
       <MainContainer>
+        {/* <Popup info={popupData.map((item) => item.info)} /> */}
         <PrimaryContainer>
           <Header />
         </PrimaryContainer>
+
         <SecondaryContainer>
           <Route path="/" component={Start} exact={true} />
           <Route path="/arrangetraining/:id" component={ArrangeTraining} />

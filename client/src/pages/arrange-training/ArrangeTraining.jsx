@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ExerciseLibrary from "../../components/exercise-library/ExerciseLibrary";
 import { useDispatch, useSelector } from "react-redux";
+import { withRouter } from "react-router";
 import {
   numberChange,
   setExerciseAction,
@@ -23,7 +24,7 @@ import {
   Button,
   ButtonContainer,
 } from "./arrangeTraining.styles";
-const ArrangeTraining = () => {
+const ArrangeTraining = ({ history }) => {
   const menu = useSelector((state) => state.menu);
   const { inputExerciseName } = menu;
   // const [inputExerciseName, setInputExerciseName] = useState("");
@@ -293,7 +294,14 @@ const ArrangeTraining = () => {
           </PrimaryContainer>
           <ButtonContainer>
             <Button onClick={handleSetExercise}>Set Exercise</Button>
-            <Button onClick={handleSetTraining}>Set Training</Button>
+            <Button
+              onClick={() => {
+                handleSetTraining();
+                history.push(`/viewtraining/${userSignin.userInfo._id}`);
+              }}
+            >
+              Set Training
+            </Button>
           </ButtonContainer>
         </Top>{" "}
       </Container>
@@ -301,4 +309,4 @@ const ArrangeTraining = () => {
   );
 };
 
-export default ArrangeTraining;
+export default withRouter(ArrangeTraining);

@@ -23,7 +23,7 @@ export const Input = styled.input`
 `;
 export const Label = styled.label`
   display: inline-block;
-  min-width: 100px;
+  min-width: 130px;
   /* background-color: red; */
 `;
 export const Button = styled.button`
