@@ -1,12 +1,12 @@
 import { ActionTypes } from "../constants/stopwatchConstants";
 const INITIAL_STATE = {
   stopwatchActive: false,
-  seriesMinutes: 0,
+  seriesSeconds: 2,
+  // seriesMinutes: 0,
   workoutMinutes: 1,
-  restMinutes: 3,
-  seriesSeconds: 0,
-  workoutSeconds: 56,
-  restSeconds: 57,
+  restMinutes: 0,
+  workoutSeconds: 2,
+  restSeconds: 3,
 };
 
 export const stopwatchReducer = (state = INITIAL_STATE, action) => {
